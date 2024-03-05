@@ -1,3 +1,5 @@
+# if I'm using docker-compose do I even need this file??
+
 # change the version probably...
 FROM python:3.9
 
