@@ -16,12 +16,12 @@ def load_data_from_postgres(*args, **kwargs):
 
     Docs: https://docs.mage.ai/design/data-loading#postgresql
     """
+    # good idea to copy the EXACT query from pgadmin
     query = 'SELECT * FROM public."PPh3_test"'
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
     with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.open()
         return loader.load(query)
 
 

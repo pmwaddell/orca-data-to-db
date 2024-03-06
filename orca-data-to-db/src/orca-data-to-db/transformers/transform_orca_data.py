@@ -19,11 +19,17 @@ def transform(data, *args, **kwargs):
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
-    # TODO: add functionality
-    # remove columns that have all NULL values
-    # remove Unnamed I guess
-    # calculate some new value??
-
+    # drop "Unnamed: 0"
+    data = data.drop(columns='Unnamed: 0')
+    # drop any columns which contain only null values
+    data = data.dropna(axis=1, how='all')
+    # replace "." in column names with "_", since BQ doesn't like periods
+    data.columns = (data.columns.str.replace('.', '_'))
+    # replace "," in column names with "_"
+    data.columns = (data.columns.str.replace(',', '_'))
+    # remove parens in column names
+    data.columns = (data.columns.str.replace('(', ''))
+    data.columns = (data.columns.str.replace(')', ''))
     return data
 
 
