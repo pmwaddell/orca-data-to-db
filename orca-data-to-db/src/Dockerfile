@@ -1,13 +1,9 @@
-# if I'm using docker-compose do I even need this file??
+FROM mageai/mageai:latest
 
-# change the version probably...
-FROM python:3.9
+ARG USER_CODE_PATH=/home/src/${PROJECT_NAME}
 
-# review if we need all of these things
-RUN pip install pandas sqlalchemy psycopg2 fastparquet pyarrow
+# Note: this overwrites the requirements.txt file in your new project on first run.
+# You can delete this line for the second run :)
+COPY requirements.txt ${USER_CODE_PATH}requirements.txt
 
-WORKDIR /app
-#COPY ingest_data.py ingest_data.py
-
-#ENTRYPOINT [ "python", "ingest_data.py" ]
-ENTRYPOINT [ "python" ]
+RUN pip3 install -r ${USER_CODE_PATH}requirements.txt
