@@ -38,17 +38,12 @@ blocks:
     data_provider: bigquery
     data_provider_profile: default
     data_provider_schema: orca_data
-    data_provider_table: PPh3_test
-    dbt: {}
-    disable_query_preprocessing: false
     export_write_policy: replace
-    limit: 1000
-    use_raw_sql: false
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
-  language: sql
+  language: python
   name: export_to_bq
   retry_config: null
   status: executed
@@ -78,7 +73,12 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-03-06 20:09:47'
+updated_at: '2024-03-08 17:19:52'
 uuid: postgres_to_bq
+variables:
+  dataset_export: orca_data
+  schema_name_load: public
+  table_name_export: PPh3_test
+  table_name_load: PPh3_test
 variables_dir: /home/src/mage_data/orca-data-to-db
 widgets: []

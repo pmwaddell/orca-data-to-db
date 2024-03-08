@@ -16,8 +16,9 @@ def load_data_from_postgres(*args, **kwargs):
 
     Docs: https://docs.mage.ai/design/data-loading#postgresql
     """
+    table_name_load = kwargs.get('table_name_load')
     # good idea to copy the EXACT query from pgadmin
-    query = 'SELECT * FROM public."PPh3_test"'
+    query = f'SELECT * FROM public."{table_name_load}"'
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 

@@ -8,6 +8,7 @@ def main():
     print('This script will attempt to concatenate all .csv files in the '
           'current directory into a single table in PostgreSQL.')
     engine = create_engine('postgresql://root:root@localhost:5431/orca_data')
+
     print('Name of the SQL table which will contain the data (press ENTER '
           'to use the default name, "q" to quit): ', end='')
     table_name = input()
@@ -48,7 +49,7 @@ def main():
                 # TODO: add logical error handling?
                 new_df = pd.read_csv(f)
                 df = pd.concat(objs=[df, new_df])
-
+    # Despite the highlight, it works just fine...
     df.to_sql(name=table_name, con=engine, if_exists=if_exists)
     print('Process complete!\n')
 
