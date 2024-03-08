@@ -1,6 +1,6 @@
 Using BASH, navigate to orca-data-to-db/orca-data-to-db/src/ directory. Then, run the command "docker compose --env-file dev.env up", which will start the Docker containers for Mage, PostgreSQL, and pgAdmin.
 
-From there, execute the script "orca_data_to_postgres.py". This should move the data from ORCA in your specified .csv file (as produced by https://github.com/pmwaddell/orca-data-extraction) into Postgres.
+From there, execute the script "orca_data_to_postgres.py". This should move the ORCA data in your specified .csv files (as produced by https://github.com/pmwaddell/orca-data-extraction) into Postgres. The script will attempt to concatenate all .csv files in the current directory into a single table.
 
 The data can be viewed in Postgres from pgAdmin at localhost:8080, using the login information specified in the dev.env file and registering the appropriate server by giving the host name, username and password from the dev.env file (the default port of 5432 should work). 
 
