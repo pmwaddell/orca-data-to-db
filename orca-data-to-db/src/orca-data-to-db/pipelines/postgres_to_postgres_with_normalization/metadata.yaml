@@ -1,0 +1,102 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    table_name: PPh3_test
+  downstream_blocks:
+  - clean_orca_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_postgres_data
+  retry_config: {}
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_postgres_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/clean_orca_data.py
+  downstream_blocks:
+  - normalize_orca_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: clean_orca_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_postgres_data
+  uuid: clean_orca_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/normalize_orca_data.py
+  downstream_blocks:
+  - export_to_postgres_norm
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: normalize_orca_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - clean_orca_data
+  uuid: normalize_orca_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_to_postgres_norm
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - normalize_orca_data
+  uuid: export_to_postgres_norm
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-03-05 22:49:26.169699+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: postgres_to_postgres_with_normalization
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+updated_at: '2024-03-11 19:44:58'
+uuid: postgres_to_postgres_with_normalization
+variables:
+  schema_name_export: post_ETL_norm
+  schema_name_load: public
+  table_name_load: PPh3_test
+  table_name_prefix_export: PPh3_test_etl_norm
+variables_dir: /home/src/mage_data/orca-data-to-db
+widgets: []

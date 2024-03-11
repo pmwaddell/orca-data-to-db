@@ -1,0 +1,2 @@
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "postgres_to_bq_copy"}, "timestamp": 1710168599, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "postgres_to_postgres_copy"}, "timestamp": 1710183010, "user": null}
