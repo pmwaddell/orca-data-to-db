@@ -6,4 +6,6 @@ The data can be viewed in Postgres from pgAdmin at localhost:8080, using the log
 
 Mage can be accessed from localhost:6789. To configure the connection to GCP, create a project and associated Service Account with appropriate Permissions (e.g., BigQuery Admin) and create a key for the account. Place the key in a directory called "personal-gcp.json" in the src directory. Be careful as always not to share this key file unnecessarily. In future, these steps should be covered by Terraform.
 
-The pipeline postgres_to_bq can be run once the ORCA data has been loaded into Postgres. This should create a schema and table in BigQuery containing your data.
+The pipeline postgres_to_bq can be run once the ORCA data has been loaded into Postgres. This should create a schema and table in BigQuery containing your cleaned data. Likewise, the pipeline postgres_to_postgres will clean the data and create a new schema in Postgres to store it.
+
+There are also pipelines from Postgres to BigQuery and Postgres which normalize the data, postgres_to_postgres_with_normalization and postgres_to_bq_with_normalization. These create a table for each data section, related by the name of the ORCA .out file for that calculation. 
