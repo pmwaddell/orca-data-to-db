@@ -37,11 +37,11 @@ def transform(data, *args, **kwargs):
         'loewdin_charge_sums'
     ]
     
-    fact_orca_data = pd.DataFrame()
-    fact_orca_data.insert(loc=0, column='script_input_filename', value=data['script_input_filename'])
-    fact_orca_data.insert(loc=0, column='orca_out_filename', value=data['orca_out_filename'])
+    orca_files = pd.DataFrame()
+    orca_files.insert(loc=0, column='script_input_filename', value=data['script_input_filename'])
+    orca_files.insert(loc=0, column='orca_out_filename', value=data['orca_out_filename'])
     dfs_from_normalization = {
-        'fact_orca_data': fact_orca_data
+        'orca_files': orca_files
     }
 
     section_data_to_add = {}
@@ -78,21 +78,23 @@ def transform(data, *args, **kwargs):
                     section_data_to_add[section].append(row)
             except AttributeError:
                 continue
+            break
 
     for section in nested_data_sections:
         # an additional 'axis' column is needed for geometry data (for x, y, z)
         if section == 'initial_geometry' or section == 'final_geometry':
-                section_dim_df = pd.DataFrame(
+                section_df = pd.DataFrame(
                 section_data_to_add[section],
                 columns=['orca_out_filename', section + '_parameter', 'axis', 'value']
             )
         else:
-            section_dim_df = pd.DataFrame(
+            section_df = pd.DataFrame(
                 section_data_to_add[section],
                 columns=['orca_out_filename', section + '_parameter', 'value']
             )
-        dfs_from_normalization['dim_' + section] = section_dim_df
-            
+        # drop any rows with null values
+        section_df.dropna(axis=0, inplace=True)
+        dfs_from_normalization[section] = section_df
 
     return dfs_from_normalization
 
