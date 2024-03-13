@@ -22,7 +22,9 @@ def transform(data, *args, **kwargs):
 
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
-    """    
+    """
+    # note: going forward I have decided to deprecate the charge sum sections
+    # these data can be gathered by aggregating the charge data and so are not needed
     nested_data_sections = [
         'initial_geometry',
         'final_geometry',
@@ -32,9 +34,7 @@ def transform(data, *args, **kwargs):
         'dipole_moments',
         'homo_lumo_energies',
         'mulliken_charges',
-        'mulliken_charge_sums',
         'loewdin_charges',
-        'loewdin_charge_sums'
     ]
     
     orca_files = pd.DataFrame()
@@ -97,6 +97,9 @@ def transform(data, *args, **kwargs):
         dfs_from_normalization[section] = section_df
 
     return dfs_from_normalization
+    # note that the function on the other end doesn't seem to get a dict
+    # of the form {str: DataFrame} but more like {str: list} w a list of dicts
+    # this does not seem to impact loading the data however...
 
 
 @test
