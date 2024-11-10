@@ -1,3 +1,19 @@
+<h1 align="center">orca-data-to-db ⚛️📊</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="https://www.mit.edu/~amini/LICENSE.md" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+</p>
+
+![logo](logo.PNG)
+
+> Scripts for moving data from ORCA (in the form of CSV/JSON files, etc.) into databases.
+
+### 🏠 [Homepage](github.com/pmwaddell/orca-data-to-db)
+
+## Setup and Operation
+
 Note: if you are cloning this repo, run create_postgres_directories.sh using BASH before doing anything else. 
 This is needed because PostgresQL requires the presence of some empty directories under postgres_data, and 
 because they are empty they are not captured by Git. 
@@ -30,3 +46,20 @@ postgres_to_postgres will clean the data and create a new schema in Postgres to 
 There are also pipelines from Postgres to BigQuery and Postgres which normalize the data, 
 postgres_to_postgres_with_normalization and postgres_to_bq_with_normalization. These create a table 
 for each data section, related by the name of the ORCA .out file for that calculation. 
+
+## Author
+
+👤 **Peter Waddell**
+
+* Website: https://github.com/pmwaddell
+* Github: [@pmwaddell](https://github.com/pmwaddell)
+* LinkedIn: [@https:\/\/www.linkedin.com\/in\/peter-waddell-ph-d-00b95265\/](https://linkedin.com/in/https:\/\/www.linkedin.com\/in\/peter-waddell-ph-d-00b95265\/)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2024 [Peter Waddell](https://github.com/pmwaddell).<br />
+This project is [MIT](https://www.mit.edu/~amini/LICENSE.md) licensed.
