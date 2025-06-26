@@ -53,7 +53,7 @@ for each data section, related by the name of the ORCA .out file for that calcul
 
 * Website: https://github.com/pmwaddell
 * Github: [@pmwaddell](https://github.com/pmwaddell)
-* LinkedIn: [@https:\/\/www.linkedin.com\/in\/peter-waddell-ph-d-00b95265\/](https://linkedin.com/in/https:\/\/www.linkedin.com\/in\/peter-waddell-ph-d-00b95265\/)
+* LinkedIn: [@https://www.linkedin.com/in/pmwaddell-ph-d/](https://www.linkedin.com/in/pmwaddell-ph-d/)
 
 ## Show your support
 
